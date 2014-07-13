@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <title> overlay demo </title>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="dist/overlay.js"></script>
+    
+    <script>
+      $(document).ready(function() {
+        $('.overlay').overlay();
+      });
+    </script>
+
+    <link rel="stylesheet" href="dist/overlay.css">
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="modal">
+        <h1>Hello World</h1>
+        <p>This is a modal.</p>
+      </div>
+    </div>
+
+    <div>
+      <h1> Hello World. </h1>
+      <p> This is content. </p>
+      <p> To trigger the overlay/modal, click <a data-overlay-trigger href="#!">here</a> </p>
+    </div>
+  </body>
+</html>
