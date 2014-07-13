@@ -12,7 +12,6 @@ to initialize overlay.js, simply include the overlay.js css and js files (and jQ
         <script src="path/to/overlay.js"></script>
 
         <link rel="stylesheet" href="path/to/overlay.css">
-
     </head>
 ```
 
