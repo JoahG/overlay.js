@@ -1,39 +1,44 @@
 /* 
- * overlay.js v1.0.0
+ * overlay.js v1.1.0
  * Copyright 2014 Joah Gerstenberg (www.joahg.com)
  */
 (function($) { 
   $.fn.overlay = function() {
-    overlay = $(this);
+    overlay = $('.overlay');
 
     overlay.ready(function() {
       overlay.on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function(e) {
-        if (!overlay.hasClass('shown')) {
-          overlay.css('visibility', 'hidden');
+        if (!$(this).hasClass('shown')) {
+          $(this).css('visibility', 'hidden');
         }
       });
 
       overlay.on('show', function() {
-        overlay.css('visibility', 'visible');
-        overlay.addClass('shown');
+        $(this).css('visibility', 'visible');
+        $(this).addClass('shown');
         return true;
       });
 
       overlay.on('hide', function() {
-        overlay.removeClass('shown');
+        $(this).removeClass('shown');
         return true;
       });
 
       overlay.on('click', function(e) {
-        if (e.target.className === overlay.attr('class')) {
-          return overlay.trigger('hide');
+        if (e.target.className === $(this).attr('class')) {
+          return $(this).trigger('hide');
         } else {
           return false;
         }
       })
 
-      $('a[data-overlay-trigger]').on('click', function() {
+      $('a[data-overlay-trigger=""]').on('click', function() {
         overlay.trigger('show');
+      });
+
+      $('a[data-overlay-trigger]:not([data-overlay-trigger=""])').on('click', function() {
+        console.log($('.overlay#' + $(this).attr('data-overlay-trigger')))
+        $('.overlay#' + $(this).attr('data-overlay-trigger')).trigger('show');
       });
     })
   };

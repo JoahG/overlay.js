@@ -15,9 +15,16 @@
     <link rel="stylesheet" href="dist/overlay.css">
   </head>
   <body>
-    <div class="overlay">
+    <div class="overlay" id="one">
       <div class="modal">
-        <h1>Hello World</h1>
+        <h1>Hello World One</h1>
+        <p>This is a modal.</p>
+      </div>
+    </div>
+
+    <div class="overlay" id="two">
+      <div class="modal">
+        <h1>Hello World Two</h1>
         <p>This is a modal.</p>
       </div>
     </div>
@@ -25,7 +32,7 @@
     <div>
       <h1> Hello World. </h1>
       <p> This is content. </p>
-      <p> To trigger the overlay/modal, click <a data-overlay-trigger href="#!">here</a> </p>
+      <p> To trigger the overlay/modal, click <a data-overlay-trigger="one" href="#!">here</a> or <a data-overlay-trigger="two" href="#!">here</a></p>
     </div>
   </body>
 </html>
