@@ -8,9 +8,7 @@
 
     overlay.ready(function() {
       overlay.on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function(e) {
-        if (!$(this).hasClass('shown')) {
-          $(this).css('visibility', 'hidden');
-        }
+        if (!$(this).hasClass('shown')) return $(this).css('visibility', 'hidden');
       });
 
       overlay.on('show', function() {
@@ -25,11 +23,7 @@
       });
 
       overlay.on('click', function(e) {
-        if (e.target.className === $(this).attr('class')) {
-          return $(this).trigger('hide');
-        } else {
-          return false;
-        }
+        if (e.target.className === $(this).attr('class')) return $(this).trigger('hide');
       })
 
       $('a[data-overlay-trigger=""]').on('click', function() {
