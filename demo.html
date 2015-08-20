@@ -3,13 +3,30 @@
   <head>
     <title> overlay demo </title>
 
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="dist/overlay.js"></script>
+    -<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="dist/overlay.min.js"></script>
     
     <script>
-      $(document).ready(function() {
+      /*$(document).ready(function() {
         $('.overlay').overlay();
+      });*/
+      function ready(fn) {
+        if (document.readyState != 'loading'){
+          fn();
+        } else if (document.addEventListener) {
+          document.addEventListener('DOMContentLoaded', fn);
+        } else {
+          document.attachEvent('onreadystatechange', function() {
+            if (document.readyState != 'loading')
+              fn();
+          });
+        }
+      }
+      
+      ready(function(){
+        window.Overlay.init();
       });
+      
     </script>
 
     <link rel="stylesheet" href="dist/overlay.css">
@@ -18,7 +35,10 @@
     <div class="overlay" id="one">
       <div class="modal">
         <h1>Hello World One</h1>
-        <p>This is a modal. <a href="#!" onclick="$('.overlay#one').trigger('hide');return false;">Sample Close Button</a></p>
+        <p>
+          This is a modal. <!--<a href="#!" onclick="$('.overlay#one').trigger('hide');return false;">Sample Close Button</a>-->
+          <a href="#!" data-overlay-close="one">Sample Close Button</a>
+        </p>
       </div>
     </div>
 
